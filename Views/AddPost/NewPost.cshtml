@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "NewPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model BlogWebSite.Models.BlogEntry;
+<div class="text-center"><h1 class="display-1">@ViewData["Title"]</h1></div>
+
+
+<h1 class="display-6">This is where you can create new posts about your experiences or new technologies.</h1>
+
+<form class="form-group" method="post">
+
+    <br /><h1 class="display-7">Blog title</h1><br />
+    @Html.TextBoxFor(x=>x.BlogTitle,new {@class = "form-control"})
+    <br /><h1 class="display-7">Blog Post</h1><br />
+    @Html.TextAreaFor(x=>x.BlogPost,new {@class = "form-control"})
+    <br />
+    <button class="btn btn-dark">Publish</button>
+</form>
+

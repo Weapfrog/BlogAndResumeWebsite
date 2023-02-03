@@ -1,0 +1,25 @@
+﻿@using BlogWebSite.Models;
+@using BlogWebSite.Models.Context;
+@model List<BlogEntry>
+
+@{
+    ViewData["Title"] = "Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align:center;">
+    <h1 class="display-1">@ViewData["Title"]</h1>
+</div>
+
+@foreach (var item in Model)
+{
+<div>
+    <h6 style="text-align:right;">@item.Time</h6>
+    <h1 class="display-4">@item.BlogTitle</h1>
+    <p>@item.BlogPost</p>
+    <h6 style="text-align:right;">Writer: @item.UserID</h6>
+    <hr style="width:%50px">
+
+</div>
+
+}
+
