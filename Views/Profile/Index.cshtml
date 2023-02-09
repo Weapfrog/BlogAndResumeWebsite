@@ -1,0 +1,32 @@
+﻿@using BlogWebSite.Models
+@model User
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center"><h1 class="display-4">Edit your profile</h1></div>
+<div class="text-center">
+
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        <img src="/Assets/@Model.UserPicture" alt="UserPicture" style="width:200px;height:200px;border-radius:50%" />
+        <h1 class="display-7">Profile Picture</h1><br />
+        <input type="file" name="UserPicture" /><br />
+        <h1>UserID:</h1>
+            @Html.TextBoxFor(x=>x.UserID,new{@style="background-color:#301E67;"})
+        <br /><br /><h1>Username:</h1>
+            @Html.TextBoxFor(x=>x.Username,new{@style="background-color:#301E67;"})
+        <br /><br /><h1>e-Mail:</h1>
+            @Html.TextBoxFor(x=>x.eMail,new{@style="background-color:#301E67;width:20%"})
+        <br /><br /><h1>Password:</h1>
+            @Html.PasswordFor(x=>x.Password,new{@style="background-color:#301E67"})
+        <br /><br /><h1>Name Surname:</h1>
+            @Html.TextBoxFor(x=>x.NameSurname,new{@style="background-color:#301E67"})
+        <br /><br /><h1>Age:</h1>
+            @Html.TextBoxFor(x=>x.age,new{@style="background-color:#301E67"})
+        <br /><br /><h1>About:</h1>
+            @Html.TextAreaFor(x=>x.About,new{@class="form-control",@style="background-color:#301E67;color:#B6EADA"})<br />
+        <button class="btn btn-close-white">Save changes</button>
+    </form>
+
+</div>

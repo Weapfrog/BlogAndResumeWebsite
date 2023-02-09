@@ -1,0 +1,18 @@
+﻿@using BlogWebSite.Models
+@model BlogEntry
+@{
+}
+<div class="text-center">
+    <h1 class="display-4">Edit your Post</h1><br />
+    <form class="form-group" method="post">
+        @Html.TextBoxFor(x=>x.BlogEntryID,new{style ="display:none;"})
+        <br /><h1 class="display-7" style="text-align:left;">Blog title</h1><br />
+        @Html.TextBoxFor(x=>x.BlogTitle,new {@class = "form-control",style="background-color:#301E67;color:#B6EADA"})
+        <br /><h1 class="display-7" style="text-align:left;">Blog Post</h1><br />
+        @Html.TextAreaFor(x=>x.BlogPost,new {@class = "form-control",style=$"background-color:#301E67;color:#B6EADA;height:{Model.BlogPost.Length/5}px;"})
+
+        <br />
+        <button style="color:#B6EADA;" class="btn btn-dark">Publish</button>
+    </form>
+</div>
+

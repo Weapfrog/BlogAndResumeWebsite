@@ -1,0 +1,68 @@
+﻿@using BlogWebSite.Models
+@model Comment
+@{
+    ViewData["Title"] = "GetPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Procedure post = ViewData["Post"] as Procedure;
+    List<CommentProcedure> comments = ViewData["ShowComments"] as List<CommentProcedure>;
+
+}
+
+@if(ViewBag.Username == post.Username)
+{
+   <div class="text-right" style="text-align:right;">
+        @Html.ActionLink("Edit","EditPost",new {postID=post.PostID})
+        @Html.ActionLink("Delete","DeletePost",new {id=post.PostID})
+    </div> 
+}
+
+<div style="border-style:groove;border-color:#B6EADA"> 
+    <br /><h6 style="text-align:right;">@post.Time.ToLongDateString()&nbsp;</h6>
+<div class="text-center">
+        <img src="~/Assets/@post.PostImage" style="width:20%;height:20%;" alt="PostImage"/>
+</div>
+
+    <h1 class="display-4">@post.BlogTitle</h1>
+    <p>@post.BlogPost</p>
+    &nbsp;@Html.ActionLink("Like","LikePost",new {id = post.PostID})
+    <i class="fa fa-thumbs-up" style="font-size:20px">@post.Likes</i>
+    @Html.ActionLink("Dislike","DislikePost",new {id = post.PostID})
+    <i class="fa fa-thumbs-down" style="font-size:20px">@post.Dislikes</i>
+    <h6 style="text-align:right;">Writer: @post.Username</h6>
+</div>
+<hr />
+<h1 class="display-7">Comments</h1>
+@foreach (var item in comments)
+{
+    if(ViewBag.Username == item.Username)
+    {
+        <div style="text-align:right;">
+            @Html.ActionLink("Edit","EditComment",new{id = item.CommentID})
+            @Html.ActionLink("Delete","DeleteComment",new{commentID = item.CommentID})
+        </div>
+
+    }
+
+<h1 style="text-align:right;font-size:18px">@item.Time.ToLongDateString()</h1>
+    <p>@item.CommentText</p>
+    <h1 class="display-7" style="text-align:right;font-size:15px">@item.Username</h1>
+    @Html.ActionLink("Like","IncrementLike",new {id = item.CommentID})
+    <i class="fa fa-thumbs-up" style="font-size:20px">@item.Likes</i>
+    @Html.ActionLink("Dislike","IncrementDislike",new {id = item.CommentID})
+    <i class="fa fa-thumbs-down" style="font-size:20px">@item.Dislikes</i>
+    <br />
+    <br />
+    <hr />
+}
+
+<form class="form-group" method="post">
+    @Html.TextAreaFor(x=>x.CommentText,new {@class = "form-control",style="background-color:#301E67"})<br />
+    @{
+        var postIdTextBox = (TagBuilder)Html.HiddenFor(x => x.PostID);
+        postIdTextBox.Attributes.Remove("value");
+        postIdTextBox.Attributes.Add("value", post.PostID.ToString());
+    }
+    @postIdTextBox;<br />
+    <button class="btn btn-info" style="background-color:#B6EADA">Add Comment</button>
+</form>
+

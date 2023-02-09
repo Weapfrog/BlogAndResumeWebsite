@@ -1,0 +1,27 @@
+﻿@using BlogWebSite.Models
+@model Comment
+<div style="text-align:center;">
+    <h1 class="display-4">Edit your Comment</h1>
+    <br />
+    <h1 class="display-6">This is where you can create new posts about your experiences or new technologies.</h1>
+
+</div>
+
+<form class="form-group" method="post">
+
+    <br /><h1 class="display-7">Text</h1><br />
+    @Html.TextBoxFor(x=>x.CommentText,new {@class = "form-control",style="background-color:#301E67;color:#B6EADA"})
+    @{
+        var commentTextBox = (TagBuilder)Html.HiddenFor(x => x.CommentID);
+        commentTextBox.Attributes.Remove("value");
+        commentTextBox.Attributes.Add("value", Model.CommentID.ToString());
+        var postTextBox = (TagBuilder)Html.HiddenFor(x => Model.PostID);
+        commentTextBox.Attributes.Remove("value");
+        commentTextBox.Attributes.Add("value", Model.CommentID.ToString());
+    }
+    @commentTextBox;
+    @postTextBox;
+    <br />
+    <button style="color:#B6EADA;" class="btn btn-dark">Publish</button>
+</form>
+

@@ -1,0 +1,13 @@
+﻿@using BlogWebSite.Models
+@model User
+
+<form class="form-group" method="post">
+    <div class="display-6" style="text-align:center;padding-top:10%">
+        <h1 class="display-4">Sign in with only two things:</h1><br />
+        @Html.TextBoxFor(x=>x.eMail,new{placeholder="eMail",style="background-color:#301E67;color:#B6EADA;"})<br /><br />
+        @Html.TextBoxFor(x=>x.Username,new {placeholder="Username",style="background-color:#301E67;color:#B6EADA;"})<br /><br />
+        @Html.PasswordFor(x=>x.Password,new{placeholder="Password",style="background-color:#301E67;color:#B6EADA;"})<br /><br />
+        <button class="btn btn-outline-success" style="font-size:35px">Sign In</button>
+    </div>
+
+</form>

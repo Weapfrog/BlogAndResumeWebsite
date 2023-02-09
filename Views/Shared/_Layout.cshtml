@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BlogWebSite.styles.css" asp-append-version="true" />
+    <style>
+        body{
+            background-color:#03001C;
+        }
+        h1,h6,h2,h3,h4,h5,i,button,input,a,hr{
+            color: #B6EADA
+        }
+        p{
+            color:#5B8FB9
+        }
+        
+
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header style="color:#B6EADA">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Weapfrog</a>
+                <a class="display-4" style="font-size:45px;text-decoration:none;color:inherit;" asp-area="" asp-controller="Home" asp-action="Index">Weapfrog </a>&nbsp;&nbsp;&nbsp;
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,15 +34,32 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a style="text-decoration:none;color:inherit;" class="display-6" asp-area="" asp-controller="Home" asp-action="Index">Home</a>&nbsp;&nbsp;&nbsp;
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Posts</a>
+                            <a style="text-decoration:none;color:inherit;" class="display-6" asp-area="" asp-controller="Post" asp-action="Index">Posts</a>&nbsp;&nbsp;&nbsp;
                         </li>
+                        @if(ViewBag.Username != null)
+                        {
+                            <li class="nav-item">
+                                <a style="text-decoration:none;color:inherit;" class="display-6" asp-area="" asp-controller="AddPost" asp-action="NewPost">NewPost</a>&nbsp;&nbsp;&nbsp;
+                            </li>
+                            
+                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AddPost" asp-action="NewPost">Add Post</a>
+                            <a style="text-decoration:none;color:inherit;" class="display-6" asp-area="" asp-controller="SearchPost" asp-action="Index">Search</a>&nbsp;&nbsp;&nbsp;
                         </li>
+                        @if(ViewBag.Username == null)
+                        {
+                        <li class="nav-item">
+                            <a style="text-decoration:none;color:inherit" class="display-6" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                        </li>
+                        }
                     </ul>
+                    @if(ViewBag.Username != null){
+                        <a style="text-decoration:none;color:inherit;text-align:right;" class="display-6" asp-area="" asp-controller="Profile" asp-action="Index">@ViewBag.Username&nbsp;&nabla;&nbsp;</a>
+                        <a style="text-decoration:none;color:inherit;text-align:right;" class="display-6" asp-area="" asp-controller="Login" asp-action="LogOut">Logout</a>
+                    }
                 </div>
             </div>
         </nav>

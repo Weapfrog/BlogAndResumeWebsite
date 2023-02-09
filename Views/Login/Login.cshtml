@@ -1,0 +1,15 @@
+﻿@using BlogWebSite.Models
+@model User
+
+<div class="display-6" style="text-align:center;">
+    <form class="form-group" method="post">
+        <br />
+        <br />
+        <h1 class="display-4">Welcome to my Blog</h1><hr style="width:40%;margin:auto;" />
+        <br />
+        @Html.TextBoxFor(x=>x.eMail,new {placeholder="E-mail",style="background-color:#301E67;color:#B6EADA;"})<br /><br />
+        @Html.TextBoxFor(x=>x.Password, new{placeholder="Password",@type="password",style="background-color:#301E67;color:#B6EADA;"})<br /><br />
+        <button class="btn btn-success" style="font-size:45px;width:225px">Login</button><br /><br />
+    </form>
+    <a style="text-decoration:none;color:inherit;" class="display-6" asp-controller="Login" asp-action="Signin"><button class="btn btn-outline-success" style="font-size:45px;width:225px">SignIn</button></a>
+</div>

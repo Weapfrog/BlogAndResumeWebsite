@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static System.Net.WebRequestMethods;
-
-namespace BlogWebSite.Models
+﻿namespace BlogWebSite.Models
 {
-    public class User
+    public class AddProfilePic
     {
-        [Key]
         public int UserID { get; set; }
         public string eMail { get; set; }
         public string Username { get; set; }
@@ -13,6 +9,6 @@ namespace BlogWebSite.Models
         public string? NameSurname { get; set; }
         public int? age { get; set; }
         public string? About { get; set; }
-        public string? UserPicture { get; set; }
+        public IFormFile UserPicture { get; set; }
     }
 }

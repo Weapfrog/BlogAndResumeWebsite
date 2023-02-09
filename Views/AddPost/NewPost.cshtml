@@ -1,22 +1,23 @@
 ﻿
 @{
-    ViewData["Title"] = "NewPost";
+    ViewData["Title"] = "New Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model BlogWebSite.Models.BlogEntry;
+@model BlogWebSite.Models.AddPostPic;
 <div class="text-center"><h1 class="display-1">@ViewData["Title"]</h1></div>
 
 
 <h1 class="display-6">This is where you can create new posts about your experiences or new technologies.</h1>
 
-<form class="form-group" method="post">
-
+<form class="form-group" method="post" enctype="multipart/form-data">
+    <h1 class="display-7">Blog Image</h1><br />
+    <input type="file" name="PostImage"/><br />
     <br /><h1 class="display-7">Blog title</h1><br />
-    @Html.TextBoxFor(x=>x.BlogTitle,new {@class = "form-control"})
+    @Html.TextBoxFor(x=>x.BlogTitle,new {@class = "form-control",style="background-color:#301E67;color:#B6EADA"})
     <br /><h1 class="display-7">Blog Post</h1><br />
-    @Html.TextAreaFor(x=>x.BlogPost,new {@class = "form-control"})
+    @Html.TextAreaFor(x=>x.BlogPost,new {@class = "form-control",style="background-color:#301E67;color:#B6EADA"})
     <br />
-    <button class="btn btn-dark">Publish</button>
+    <button style="color:#B6EADA;" class="btn btn-dark">Publish</button>
 </form>
 

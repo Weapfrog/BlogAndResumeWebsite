@@ -9,7 +9,10 @@ namespace BlogWebSite.Models
         public string BlogTitle { get; set;}
         public string BlogPost { get; set;}
         public DateTime Time { get; set; } = DateTime.Now;
-        public int UserID { get; set; } = 1;
-        public string? Keywords { get; set; }
+        public int UserID { get; set; }
+        public int Likes { get; set; } = 0;
+        public int Dislikes { get; set; } = 0;
+        public string? PostImage { get; set; }
+
     }
 }

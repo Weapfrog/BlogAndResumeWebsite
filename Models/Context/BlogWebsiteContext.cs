@@ -10,6 +10,7 @@ namespace BlogWebSite.Models.Context
         }
         public DbSet<User> Users { get; set; }
         public DbSet<BlogEntry> BlogEntries { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }

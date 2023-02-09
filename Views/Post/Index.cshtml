@@ -1,25 +1,23 @@
 ﻿@using BlogWebSite.Models;
 @using BlogWebSite.Models.Context;
-@model List<BlogEntry>
-
+@model IEnumerable<Procedure>
 @{
     ViewData["Title"] = "Posts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="text-align:center;">
-    <h1 class="display-1">@ViewData["Title"]</h1>
+    <h1 class="display-1">@ViewData["Title"]</h1><hr style="width:17%;margin:auto;" />
 </div>
 
-@foreach (var item in Model)
-{
-<div>
-    <h6 style="text-align:right;">@item.Time</h6>
-    <h1 class="display-4">@item.BlogTitle</h1>
-    <p>@item.BlogPost</p>
-    <h6 style="text-align:right;">Writer: @item.UserID</h6>
-    <hr style="width:%50px">
-
-</div>
-
+@{
+    foreach (var item in Model)
+    {
+        <div>
+            <h6 style="text-align:right;">@item.Time.ToLongDateString()</h6>
+            <h1 class="display-4"><a style="text-decoration:none;color:inherit;" asp-action="GetPost" asp-route-id="@item.PostID">@item.BlogTitle</a></h1>
+            <p>@item.BlogPost.Substring(0,item.BlogPost.Length/3)<a style="text-decoration:none;" asp-action="GetPost" asp-route-id="@item.PostID">...Click to continue reading.</a></p>
+            <h6 style="text-align:right;">Writer: @item.Username</h6><hr>
+        </div>
+    }
 }
 
